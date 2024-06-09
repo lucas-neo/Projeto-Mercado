@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.x/css/all.min.css">
+    <style>
+        .form-section {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/assets/img/logo.png" alt="Logo" class="logo">
+            </a>
+            <a class="navbar-brand greeting user-greeting" id="user-greeting" href="#">Olá</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/loja-virtual.html">Loja Virtual</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="">Produtos</a>
+                    </li> 
+                    <!-- outros itens do menu podem ser adicionados aqui -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>Gerenciamento de Produtos</h1>
+                <p>Adicione, edite e remova produtos.</p>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12 text-right">
+                <button class="btn btn-primary" onclick="showAddProductForm()">+</button>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome do Produto</th>
+                            <th>Categoria</th>
+                            <th>Preço</th>
+                            <th>Estoque</th>
+                            <th>Imagem</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-list">
+                        <!-- Produtos serão carregados aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Formulário de Adicionar Produto -->
+        
+        <div class="row form-section" id="add-product-form">
+            <div class="col-md-12">
+                <h3>Adicionar Novo Produto</h3>
+                <!--Adiciona o produto quando clicado-->
+                <form onsubmit="addProduct(event)"> 
+                    <div class="form-group">
+                        <label for="add-product-name">Nome do Produto</label>
+                        <input type="text" class="form-control" id="add-product-name" placeholder="Digite o nome do produto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-product-category">Categoria</label>
+                        <input type="text" class="form-control" id="add-product-category" placeholder="Digite a categoria do produto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-product-price">Preço</label>
+                        <input type="number" class="form-control" id="add-product-price" placeholder="Digite o preço do produto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-product-stock">Estoque</label>
+                        <input type="number" class="form-control" id="add-product-stock" placeholder="Digite a quantidade em estoque" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-product-image">URL da Imagem</label>
+                        <input type="text" class="form-control" id="add-product-image" placeholder="Digite a URL da imagem">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adicionar Produto</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideForms()">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Formulário de Editar Produto -->
+        <div class="row form-section" id="edit-product-form">
+            <div class="col-md-12">
+                <h3>Editar Produto</h3>
+                <form onsubmit="updateProduct(event)">
+                    <div class="form-group">
+                        <label for="edit-product-id">ID do Produto</label>
+                        <input type="text" class="form-control" id="edit-product-id" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-product-name">Nome do Produto</label>
+                        <input type="text" class="form-control" id="edit-product-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-product-category">Categoria</label>
+                        <input type="text" class="form-control" id="edit-product-category" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-product-price">Preço</label>
+                        <input type="number" class="form-control" id="edit-product-price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-product-stock">Estoque</label>
+                        <input type="number" class="form-control" id="edit-product-stock" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-product-image">URL da Imagem</label>
+                        <input type="text" class="form-control" id="edit-product-image" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideForms()">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./js/admin.js"></script>
+</body>
+</html>

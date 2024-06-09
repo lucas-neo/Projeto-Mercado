@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Virtual</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+</head>
+<style>
+    /* Estilo personalizado para o dropdown do carrinho */
+    .custom-cart-dropdown {
+        width: 400px;
+        /* Aumenta a largura do dropdown */
+        max-height: 500px;
+        /* Define a altura máxima do dropdown */
+        overflow-y: auto;
+        /* Adiciona rolagem vertical se o conteúdo exceder a altura máxima */
+    }
+    .cart-item {
+        margin-bottom: 10px;
+        /* Adiciona um espaçamento entre os itens do carrinho */
+    }
+</style>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="/assets/img/logo.png" alt="Logo"
+                class="img-fluid" style="max-width: 50%;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/loja-virtual.html">Produtos<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Carrinho <img src="assets/icons/sell-stock.svg" alt="Carrinho" class="img-fluid"
+                            style="width: 20px;">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right custom-cart-dropdown"
+                        aria-labelledby="navbarDropdown">
+                        <div id="cart-dropdown" class="px-4 py-2">
+                            <!-- Itens do carrinho serão inseridos aqui -->
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-center" href="buy-products.html">Finalizar Compra</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container mt-5">
+        <div class="row" id="market-product-list">
+            <!-- Produtos serão carregados aqui -->
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3">
+            © 2024 Mercado:
+            <a class="text-dark" href="#">mercado.com</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

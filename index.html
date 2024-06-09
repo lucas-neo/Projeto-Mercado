@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/log-in-sign-in.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <!-- Coluna da Logo -->
+            <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center">
+                <img src="/assets/img/logo.png" alt="Logo" class="img-fluid">
+            </div>
+            <!-- Coluna do Login -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="w-75">
+                    <h3 class="text-center mb-4">Log-in</h3>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" id="name-login" placeholder="Digite seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Senha</label>
+                            <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+                        </div>
+                        <!-- Elemento para a mensagem de erro -->
+                        <div id="error-message" class="text-danger mt-2" style="display: none;">Senha incorreta. Tente novamente.</div>
+                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS para redirecionamento -->
+<script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    var password = document.getElementById('password').value;
+    var name_login = document.getElementById('name-login').value;
+
+    var errorMessage = document.getElementById('error-message');
+    if (password === 'senha123') {
+        // Redirecionar para a página de mercado caso a senha esteja correta
+        localStorage.setItem('user_login', name_login)
+        window.location.href = 'admin-loja.html';
+    } else {
+        // Mostrar mensagem de erro se a senha estiver incorreta
+        errorMessage.style.display = 'block';
+    }
+});
+    </script>
+
+</body>
+</html>

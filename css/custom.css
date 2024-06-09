@@ -1,0 +1,20 @@
+#product-list img {
+    max-width: 100px;
+    max-height: 100px;
+}
+.navbar .logo {
+    max-width: 50px; /* ajuste conforme necessário */
+}
+
+.navbar .greeting {
+    padding-left: 10px; /* adiciona espaço entre a logo e o texto */
+    font-size: 1.2rem; /* ajusta o tamanho da fonte conforme o necessário */
+    line-height: 50px; /* alinha verticalmente com a logo */
+}
+
+@media (max-width: 992px) {
+    .navbar .greeting {
+        display: none; /* opcional, esconde a saudação em telas menores */
+    }
+}
+
