@@ -1,3 +1,4 @@
+
 document.getElementById('login-form').addEventListener('submit', function(event) {
     event.preventDefault();
     
@@ -8,7 +9,9 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     if (password === 'senha123') {
         // Redirecionar para a página de mercado caso a senha esteja correta
         localStorage.setItem('user_login', name_login)
-        window.location.href = 'gerenciamento.html';
+        var token = btoa(new Date().getTime() + name_login);
+        localStorage.setItem('auth_token', token);
+        window.location.href = 'admin-loja.html';
     } else {
         // Mostrar mensagem de erro se a senha estiver incorreta
         errorMessage.style.display = 'block';

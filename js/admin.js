@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
+    var token = localStorage.getItem('auth_token');
+    
+    if (!token) {
+        // Se o token não existir, redirecionar para a página de login
+        window.location.href = 'index.html';
+    } else {
+        // Opcional: validar o token de forma mais complexa
+        console.log('Token válido:', token);
+    }
+});
+document.addEventListener('DOMContentLoaded', function() {
     var userName = localStorage.getItem('user_login');
     if (userName) {
         document.getElementById('user-greeting').textContent = 'Olá, ' + userName;
