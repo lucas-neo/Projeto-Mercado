@@ -19,9 +19,9 @@ function loadProducts() {
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">${product.category}</p>
-                    <p class="card-text">R$ ${product.price},00</p>
-                    <p class="card-text">Em estoque: ${product.stock}</p>
-                    <a href="#" class="btn btn-primary" onclick="addToCart(${product.id})"><img src="assets/icons/add-shopping-cart.svg" alt="Carrinho" class="img-fluid" style="width: 20px;"></a>
+                    <h4 class="card-text">R$ ${product.price},00</h4>
+                    <br>
+                    <a href="#" class="btn btn-dark" onclick="addToCart(${product.id})"><img src="assets/icons/add-shopping-cart.svg" alt="Carrinho" class="img-fluid" style="width: 20px;"></a>
                 </div>
             </div>
         `;
@@ -45,6 +45,7 @@ function updateCartDropdown() {
         cartDropdown.innerHTML += `
             <div class="cart-item d-flex justify-content-between align-items-center">
                 <span>${item.name}</span>
+                <span>R$${item.price},00</span>
                 <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})"><img         src="assets/icons/delete.svg" alt="Excluir" style="width: 20px;"></button>
             </div>`;
     });
