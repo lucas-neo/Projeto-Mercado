@@ -40,16 +40,21 @@ function addToCart(productId) {
 
 function updateCartDropdown() {
     const cartDropdown = document.getElementById('cart-dropdown');
-    cartDropdown.innerHTML = ''; // Limpar a lista atual
-    cart.forEach((item, index) => {
+    cartDropdown.innerHTML = ''; 
+
+    for (let index = 0; index < cart.length; index++) {
+        const item = cart[index];
         cartDropdown.innerHTML += `
             <div class="cart-item d-flex justify-content-between align-items-center">
                 <span>${item.name}</span>
                 <span>R$${item.price},00</span>
-                <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})"><img         src="assets/icons/delete.svg" alt="Excluir" style="width: 20px;"></button>
+                <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">
+                    <img src="assets/icons/delete.svg" alt="Excluir" style="width: 20px;">
+                </button>
             </div>`;
-    });
+    }
 }
+
 
 function removeFromCart(index) {
     event.stopPropagation();
