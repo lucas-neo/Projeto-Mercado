@@ -11,7 +11,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         localStorage.setItem('user_login', name_login)
         var token = btoa(new Date().getTime() + name_login);
         localStorage.setItem('auth_token', token);
-        window.location.href = 'admin-loja.html';
+        window.location.href = 'loja-virtual.html';
     } else {
         // Mostrar mensagem de erro se a senha estiver incorreta
         errorMessage.style.display = 'block';
